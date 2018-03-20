@@ -1,18 +1,25 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-front//node_modules
+frontend/node_modules
 .idea/
+*.pyc*
+backend/__pycache__
+blog/__pycache__
 
 # testing
 /coverage
 
 # production
-front/build
+frontend/build
+
+# static
+backend/static
 
 
 # data
 db.sqlite3
+backend/migrations
 
 # misc
 .DS_Store

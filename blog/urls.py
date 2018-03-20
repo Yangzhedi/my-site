@@ -18,23 +18,31 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import TemplateView
 from backend.feeds import BlogRssFeed
-from backend.views import hello
+from backend.views import hello, blog1, ajax_time
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
 #     url(r'^$', TemplateView.as_view(template_name="index.html"))
 # ]
 
+# -*- coding: utf-8 -*-
+import xadmin
+xadmin.autodiscover()
+from xadmin.plugins import xversion
+xversion.register_models()
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
+    # url('admin/', admin.site.urls),
+    url(r'xadmin/', xadmin.site.urls),
     url(r'^rss/$', BlogRssFeed(), name='rss'),
 
 
     url(r'^$', TemplateView.as_view(template_name="index.html")),
+    # url(r'^login$',TemplateView.as_view()),
 
-
-    # url(r'^hello/$', hello),
+    url(r'^hello/$', hello),
+    url(r'^blog1/$', blog1),
+    url(r'^blog2/$', ajax_time),
 
     # url(r'^api/', include('backend.urls', namespace='api'))
 ]

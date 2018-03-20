@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter,HashRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 // import './index.css';
 // import { counter } from "./index.redux";
@@ -31,7 +31,7 @@ const store = createStore(reducers, compose(
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
             {/*<App />*/}
             <Switch>
                 {/*只渲染命中的第一个Route*/}
@@ -39,7 +39,7 @@ ReactDOM.render(
                 <Route path='/dashboard' component={Dashboard} />
                 <Redirect to='/dashboard' />
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     </Provider>,
     document.getElementById('root')
 );

@@ -38,7 +38,7 @@ class BlogsPost(BaseModel):
     views = models.IntegerField(default=0)
     tags = models.ManyToManyField(Tag, related_name='tag_arts')
     # author = models.CharField(max_length=50, default='Timi')
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(default=None)
     # blog_id = models.IntegerField(default=0)
     classification = models.CharField(max_length=10, default=u'原创')
     content = models.TextField()
@@ -54,8 +54,8 @@ class Comment(BaseModel):
     def __unicode__(self):
         return '{0}-{1}'.format(self.author, self.create_time.strftime("%Y-%m-%d %H:%M:%S"))
 
-class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('views', 'classification')
+class BlogPostAdmin(object):
+    list_display = ('id', 'title', 'timestamp')
 
 
 # admin.site.register(BlogPostAdmin)

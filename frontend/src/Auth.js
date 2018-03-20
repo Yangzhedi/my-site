@@ -18,7 +18,7 @@ class Auth extends React.Component {
 
     componentDidMount(){
         // this.props.getUserData()
-        axios.get('/hello')
+        axios.get('/blog1')
             .then( res => {
                 if (res.status === 200) {
                     // dispatch(userData(res.data));
