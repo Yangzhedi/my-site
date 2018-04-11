@@ -54,8 +54,8 @@ class Comment(BaseModel):
     def __unicode__(self):
         return '{0}-{1}'.format(self.author, self.create_time.strftime("%Y-%m-%d %H:%M:%S"))
 
-class BlogPostAdmin(object):
-    list_display = ('id', 'title', 'timestamp')
+# class BlogPostAdmin():
+#     list_display = ('id', 'title', 'timestamp')
 
 
 # admin.site.register(BlogPostAdmin)

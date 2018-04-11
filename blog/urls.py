@@ -37,13 +37,14 @@ urlpatterns = [
     url(r'^rss/$', BlogRssFeed(), name='rss'),
 
 
-    url(r'^$', TemplateView.as_view(template_name="index.html")),
-    url(r'^(?:.*)/?$', TemplateView.as_view(template_name="index.html")),
     # url(r'^login$',TemplateView.as_view()),
 
     url(r'^hello/$', hello),
     url(r'^blog1/$', blog1),
     url(r'^blog2/$', ajax_time),
+
+    url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^(?:.*|!admin/)/?$', TemplateView.as_view(template_name="index.html")),
 
     # url(r'^api/', include('backend.urls', namespace='api'))
 ]

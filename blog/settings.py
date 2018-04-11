@@ -30,7 +30,7 @@ SECRET_KEY = 'j%q%pv5bbj#%3#k#66#^0*^9hys4()zo&rsg=qua^aj3_i1a&-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['114.215.139.107', 'localhost', 'yangzhedi.com', 'www.yangzhedi.com']
 
 
 # Application definition
@@ -43,10 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend',
-
-    'xadmin',
-    'crispy_forms',
-    'reversion',
 ]
 
 MIDDLEWARE = [
