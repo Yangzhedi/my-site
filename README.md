@@ -17,7 +17,7 @@ yzd的个人网站：[www.yangzhedi.com](http://www.yangzhedi.com)
 
 - ~~前端代码按需加载~~
 - ~~部署上线完成~~
--  前端管理后台
+- [x]  前端管理后台
 -  React规范整理
 - 博客功能重构
 - 股票下载功能重构
