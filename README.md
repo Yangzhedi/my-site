@@ -1,6 +1,6 @@
 # my-site
 new💊 personal website: FE:React;BE:Django
-[![ENV](https://img.shields.io/badge/python-3.6-blue.svg)](https://github.com/Yangzhedi/myBlog)
+
 [![ENV](https://img.shields.io/badge/django-2.0-blue.svg)](https://github.com/Yangzhedi/myBlog)
 [![ENV](https://img.shields.io/badge/react-16.2.0-blue.svg)](https://github.com/Yangzhedi/myBlog)
 
@@ -15,9 +15,10 @@ yzd的个人网站：[www.yangzhedi.com](http://www.yangzhedi.com)
 
 ### ToDo
 
-- ~~前端代码按需加载~~
-- ~~部署上线完成~~
-- [x]  前端管理后台
--  React规范整理
-- 博客功能重构
-- 股票下载功能重构
+
+- [x] 前端代码按需加载   0327
+- [x] 部署上线完成    0329
+- [x] 前端管理后台   0415
+- [ ] React规范整理
+- [ ] 博客功能重构
+- [ ] 股票下载功能重构

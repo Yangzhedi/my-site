@@ -41,6 +41,7 @@ class BlogsPost(BaseModel):
     timestamp = models.DateTimeField(default=None)
     # blog_id = models.IntegerField(default=0)
     classification = models.CharField(max_length=10, default=u'原创')
+    description = models.CharField(max_length=150, default=u'等我想一个高大上的简介出来')
     content = models.TextField()
 
 

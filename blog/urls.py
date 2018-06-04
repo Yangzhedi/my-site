@@ -18,12 +18,31 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import TemplateView
 from backend.feeds import BlogRssFeed
-from backend.views import hello, blog1, ajax_time
+from backend.views import hello, blog1, ajax_time, test
+from backend.view.tag import get_all_tags, create_tag
+from backend.view.blog import get_all_blogs
+from backend.view.gif.gif import create_gif
+from backend.view.auth import login
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     url(r'^$', TemplateView.as_view(template_name="index.html"))
-# ]
+
+# from django.contrib.auth.models import User
+# from rest_framework import routers, serializers, viewsets
+#
+# # Serializers define the API representation.
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('url', 'username', 'email', 'is_staff')
+#
+# # ViewSets define the view behavior.
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#
+# # Routers provide an easy way of automatically determining the URL conf.
+# router = routers.DefaultRouter()
+# router.register(r'users', UserViewSet)
+
 
 # -*- coding: utf-8 -*-
 # import xadmin
@@ -40,8 +59,17 @@ urlpatterns = [
     # url(r'^login$',TemplateView.as_view()),
 
     url(r'^hello/$', hello),
+    url(r'^test/$', test),
     url(r'^blog1/$', blog1),
     url(r'^blog2/$', ajax_time),
+    url(r'^api/v1/login$', login),
+    url(r'^api/v1/get-all-tags$', get_all_tags),
+    url(r'^api/v1/create-tag$', create_tag),
+    url(r'^api/v1/get-all-blogs$', get_all_blogs),
+    url(r'^api/v1/create-gif$', create_gif),
+
+    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
 
     url(r'^$', TemplateView.as_view(template_name="index.html")),
     url(r'^(?:.*|!admin/)/?$', TemplateView.as_view(template_name="index.html")),
