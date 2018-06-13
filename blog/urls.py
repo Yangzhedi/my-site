@@ -20,7 +20,7 @@ from django.views.generic.base import TemplateView
 from backend.feeds import BlogRssFeed
 from backend.views import hello, blog1, ajax_time, test
 from backend.view.tag import get_all_tags, create_tag
-from backend.view.blog import get_all_blogs
+from backend.view.blog import get_all_blogs, get_blog_by_id
 from backend.view.gif.gif import create_gif
 from backend.view.auth import login
 
@@ -66,6 +66,7 @@ urlpatterns = [
     url(r'^api/v1/get-all-tags$', get_all_tags),
     url(r'^api/v1/create-tag$', create_tag),
     url(r'^api/v1/get-all-blogs$', get_all_blogs),
+    url(r'^api/v1/get-blog$', get_blog_by_id),
     url(r'^api/v1/create-gif$', create_gif),
 
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

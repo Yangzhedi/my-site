@@ -1,5 +1,6 @@
 #coding=utf-8
 import json
+import math
 import datetime
 from django.shortcuts import render
 from django.db import models
@@ -39,10 +40,23 @@ def get_all_blogs(request):
     print(request_dict["page"])
     print(request_dict["size"])
 
-    result = blog_list2json(blog_list)
+    res_page = request_dict["page"]
+    res_size = request_dict["size"]
+
+    blog_total = len(blog_list)
+
+    r_l = (res_page - 1) * res_size
+    r_r = res_page * res_size
+
+    result_list = blog_querySet[r_l: r_r]
+
+    result = blog_list2json(list(result_list.values()))
 
     # return HttpResponse("get_all_blogs")
-    return HttpResponse(json.dumps(result))
+
+    response = HttpResponse(json.dumps(result))
+    response["x-total"] = blog_total
+    return response
 
 
 def blog_list2json(blog_list):
@@ -62,3 +76,14 @@ def blog_list2json(blog_list):
         }
         result.append(blog)
     return result
+
+
+def get_blog_by_id(request):
+    blog_querySet = BlogsPost.objects.all()
+
+    request_dict = json.loads(request.body.decode())
+
+    blog_list = list(blog_querySet.values())
+    print(request_dict["id"])
+
+    return HttpResponse(json.dumps('123'))
