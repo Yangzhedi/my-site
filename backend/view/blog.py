@@ -66,10 +66,10 @@ def blog_list2json(blog_list):
             "id": value["id"],
             "title": value["title"],
             "content": value["content"],
-            "create_time": value["create_time"].strftime('%Y-%m-%d'),
-            "modify_time": value["modify_time"].strftime('%Y-%m-%d'),
+            "create_time": value["create_time"].strftime('%Y-%m-%d %H:%M:%S'),
+            "modify_time": value["modify_time"].strftime('%Y-%m-%d %H:%M:%S'),
             "views": value["views"],
-            "timestamp": value["timestamp"].strftime('%Y-%m-%d'),
+            "timestamp": value["timestamp"].strftime('%Y-%m-%d %H:%M:%S'),
             # "tag": value["tag"],
             "classification": value["classification"],
             "description": value["description"],
@@ -79,11 +79,23 @@ def blog_list2json(blog_list):
 
 
 def get_blog_by_id(request):
-    blog_querySet = BlogsPost.objects.all()
+
 
     request_dict = json.loads(request.body.decode())
+    res_id = request_dict["id"]
 
-    blog_list = list(blog_querySet.values())
-    print(request_dict["id"])
+    blog_querySet = BlogsPost.objects.filter(id=res_id)
 
-    return HttpResponse(json.dumps('123'))
+
+    if len(list(blog_querySet.values())) == 0:
+        return HttpResponse(json.dumps({"message":'no blog'}))
+    else:
+        blog_dict = list(blog_querySet.values())[0]
+    # blog_dict = model_to_dict(blog_querySet)
+    blog_dict["timestamp"] = blog_dict["timestamp"].strftime('%Y-%m-%d %H:%M:%S')
+    blog_dict["modify_time"] = blog_dict["modify_time"].strftime('%Y-%m-%d %H:%M:%S')
+    blog_dict["create_time"] = blog_dict["create_time"].strftime('%Y-%m-%d %H:%M:%S')
+    blog_dict["tags"] = ''
+    print(blog_dict)
+
+    return HttpResponse(json.dumps(blog_dict))
